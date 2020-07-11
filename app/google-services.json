@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "904117673121",
+    "firebase_url": "https://chatbird-final.firebaseio.com",
+    "project_id": "chatbird-final",
+    "storage_bucket": "chatbird-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904117673121:android:ff2eab380243aca877a4e0",
+        "android_client_info": {
+          "package_name": "com.example.chatbirdfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904117673121-u2kndunpeacee0fc7q24bvkbg45b2i0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatbirdfinal",
+            "certificate_hash": "e3e28c564ef17838787803735263b9c677af60b5"
+          }
+        },
+        {
+          "client_id": "904117673121-v5pn0bnqhdupheea7au6datjn97p7qp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1LI78NNcFrD8nO5_rQIZ0AoKeFFht0u4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904117673121-v5pn0bnqhdupheea7au6datjn97p7qp8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
