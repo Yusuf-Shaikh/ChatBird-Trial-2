@@ -1,5 +1,6 @@
 package com.example.chatbirdfinal.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +14,9 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import com.example.chatbirdfinal.Adapter.PostAdapter;
+import com.example.chatbirdfinal.Main2Activity;
 import com.example.chatbirdfinal.Model.Post;
+import com.example.chatbirdfinal.OptionsActivity;
 import com.example.chatbirdfinal.R;
 import com.example.chatbirdfinal.Adapter.PostAdapter;
 import com.example.chatbirdfinal.Model.Post;
@@ -33,7 +36,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postList;
-    private ImageButton inbox;
+    private ImageButton inbox,gotohome2;
 
     private List<String> followingList;
 
@@ -45,6 +48,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        gotohome2 = view.findViewById(R.id.goto_home2);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
@@ -59,6 +63,13 @@ public class HomeFragment extends Fragment {
 
         checkFollowing();
 
+        gotohome2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Main2Activity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

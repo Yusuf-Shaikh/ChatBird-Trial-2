@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.example.chatbirdfinal.Adapter.MyFotosAdapter;
 import com.example.chatbirdfinal.EditProfileActivity;
 import com.example.chatbirdfinal.FollowersActivity;
+import com.example.chatbirdfinal.MessageActivity;
 import com.example.chatbirdfinal.Model.Post;
 import com.example.chatbirdfinal.Model.User;
 import com.example.chatbirdfinal.OptionsActivity;
@@ -46,7 +47,7 @@ public class ProfileFragment extends Fragment {
 
     ImageView image_profile, options;
     TextView posts, followers, following, fullname, bio, username;
-    Button edit_profile;
+    Button edit_profile,send_dm;
 
     RecyclerView recyclerView;
     MyFotosAdapter myFotosAdapter;
@@ -74,6 +75,7 @@ public class ProfileFragment extends Fragment {
         fullname = view.findViewById(R.id.fullname);
         bio = view.findViewById(R.id.bio);
         edit_profile = view.findViewById(R.id.edit_profile);
+        send_dm = view.findViewById(R.id.send_per_msg);
         username = view.findViewById(R.id.username);
         my_fotos = view.findViewById(R.id.my_fotos);
         saved_fotos = view.findViewById(R.id.saved_fotos);
@@ -122,6 +124,15 @@ public class ProfileFragment extends Fragment {
                             .child("followers").child(firebaseUser.getUid()).removeValue();
 
                 }
+            }
+        });
+
+        send_dm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MessageActivity.class);
+                intent.putExtra("userid", profileid);
+                startActivity(intent);
             }
         });
 
@@ -203,6 +214,8 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(profileid).exists()) {
                     edit_profile.setText("following");
+                    send_dm.setVisibility(View.VISIBLE);
+                    send_dm.setText("Message");
                 } else {
                     edit_profile.setText("follow");
                 }
