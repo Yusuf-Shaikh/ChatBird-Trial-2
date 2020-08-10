@@ -42,6 +42,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -65,7 +67,7 @@ public class ProfileFragment extends Fragment {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("PREFS", MODE_PRIVATE);
         profileid = sharedPreferences.getString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         image_profile = view.findViewById(R.id.image_profile);
@@ -93,6 +95,7 @@ public class ProfileFragment extends Fragment {
         getFollowers();
         getNrPosts();
         myFotos();
+        savecurrentuser();
 
         if (profileid.equals(firebaseUser.getUid())){
             edit_profile.setText("Edit Profile");
@@ -164,8 +167,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
         return view;
+    }
+
+    public void savecurrentuser() {
+        SharedPreferences sharedpreferences = getContext().getSharedPreferences("PREFS",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("profileid",firebaseUser.getUid());
+        editor.apply();
     }
 
     private void addNotification(){

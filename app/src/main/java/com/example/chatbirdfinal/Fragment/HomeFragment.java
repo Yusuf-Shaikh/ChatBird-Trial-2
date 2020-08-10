@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chatbirdfinal.Adapter.PostAdapter;
 import com.example.chatbirdfinal.Main2Activity;
@@ -37,6 +39,7 @@ public class HomeFragment extends Fragment {
     private PostAdapter postAdapter;
     private List<Post> postList;
     private ImageButton inbox,gotohome2;
+    private TextView  welcome_msg;
 
     private List<String> followingList;
 
@@ -58,6 +61,7 @@ public class HomeFragment extends Fragment {
         postList = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postList);
         recyclerView.setAdapter(postAdapter);
+        welcome_msg = view.findViewById(R.id.welcome_message);
 
         progressBar = view.findViewById(R.id.progress_circular);
 
@@ -79,12 +83,15 @@ public class HomeFragment extends Fragment {
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("following");
 
+
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 followingList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     followingList.add(snapshot.getKey());
+
                 }
 
                 readPosts();
@@ -95,6 +102,8 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+
     }
 
 

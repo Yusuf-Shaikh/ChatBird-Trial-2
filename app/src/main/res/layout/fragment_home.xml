@@ -47,6 +47,19 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome_message"
+        android:layout_below="@+id/bar"
+        android:textSize="20dp"
+        android:text="welcome"
+        android:visibility="gone"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:background="@drawable/button_background"
+        android:textColor="@color/colorPrimary"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

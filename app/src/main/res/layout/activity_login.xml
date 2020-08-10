@@ -72,10 +72,19 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="Don't have an sccount? Sign up"
+               android:text="Forgot your password?"
+               android:id="@+id/forget_password"
+               android:layout_below="@id/login"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Don't have an account? Sign up"
                android:id="@+id/txt_signup"
                android:textStyle="bold"
-               android:layout_below="@id/login"
+               android:layout_below="@id/forget_password"
                android:layout_centerHorizontal="true"
                android:textColor="@color/colorPrimaryDark"
                android:layout_marginTop="10dp"/>
