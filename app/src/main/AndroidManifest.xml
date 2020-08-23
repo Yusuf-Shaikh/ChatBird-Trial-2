@@ -3,6 +3,7 @@
     package="com.example.chatbirdfinal">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,7 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".PrimeX.PrimeXLeaderboardsActivity"></activity>
+        <activity android:name=".PrimeX.PrimeXResultsActivity" />
+        <activity android:name=".PrimeX.PrimeXQuesActivity" />
+        <activity
+            android:name=".PrimeX.PrimeXHomeActivity"
+            android:label="@string/title_activity_prime_x_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResetPassword" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".OptionsActivity" />
@@ -35,14 +47,14 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Notifications.MyFirebaseIdService"
+        <service
+            android:name=".Notifications.MyFirebaseIdService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_SERVICE"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_SERVICE" />
             </intent-filter>
         </service>
-
         <service
             android:name=".Notifications.MyFirebaseMessaging"
             android:enabled="true"

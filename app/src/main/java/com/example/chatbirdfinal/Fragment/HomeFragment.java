@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chatbirdfinal.Adapter.PostAdapter;
+import com.example.chatbirdfinal.GameActivity;
 import com.example.chatbirdfinal.Main2Activity;
 import com.example.chatbirdfinal.Model.Post;
 import com.example.chatbirdfinal.OptionsActivity;
@@ -38,7 +39,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postList;
-    private ImageButton inbox,gotohome2;
+    private ImageButton inbox,gotohome2,game;
     private TextView  welcome_msg;
 
     private List<String> followingList;
@@ -52,6 +53,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         gotohome2 = view.findViewById(R.id.goto_home2);
+        game = view.findViewById(R.id.game);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
@@ -71,6 +73,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Main2Activity.class);
+                startActivity(intent);
+            }
+        });
+        game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GameActivity.class);
                 startActivity(intent);
             }
         });

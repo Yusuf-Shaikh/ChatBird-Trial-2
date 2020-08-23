@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView txt_login;
 
     FirebaseAuth auth;
-    DatabaseReference reference;
+    DatabaseReference reference,reference1;
     ProgressDialog pd;
 
     @Override
@@ -108,13 +108,24 @@ public class RegisterActivity extends AppCompatActivity {
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful())
-                                    {
-                                        pd.dismiss();
-                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                    }
+                                    reference1 = FirebaseDatabase.getInstance().getReference().child("game")
+                                            .child("primex").child("score");
+                                    HashMap<String, Object>hashMap1 = new HashMap<>();
+                                    hashMap1.put("name",username.toLowerCase());
+                                    hashMap1.put("image","https://firebasestorage.googleapis.com/v0/b/deltafinal-project.appspot.com/o/profile_image.png?alt=media&token=52e7f75b-9bac-4025-9663-03dee6069d23");
+                                    hashMap1.put("score",0);
+                                    reference1.child(userid).setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful())
+                                            {
+                                                pd.dismiss();
+                                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    });
                                 }
                             });
                         }
